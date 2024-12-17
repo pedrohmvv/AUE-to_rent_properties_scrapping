@@ -100,10 +100,9 @@ The data extracted from each property listing will include the following informa
 
 Here’s an example of how the data will look in the CSV file:
 
-| Details               | Price     | Location     | Rooms | Bathrooms | Area   | Link | Contact |
-|-----------------------|-----------|--------------|-------|-----------|--------|------|---------|
-| "2 Bedroom Apartment" | 50,000 AED| Dubai Marina | 2     | 2         | 120 m² | [link](#) | [contact](#) |
-| "3 Bedroom House"     | 80,000 AED| Abu Dhabi    | 3     | 3         | 200 m² | [link](#) | [contact](#) |
+|    | Details                                         | Price           | Location                                                         | Bedrooms | Bathrooms | Area     | Link                                                                                                                                     | Contact           |
+|----|-------------------------------------------------|-----------------|------------------------------------------------------------------|----------|-----------|----------|-----------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+|  0 | Chiller Free, Stunning View, Luxury Lifestyle  | 95,000 AED/year | One Park Avenue, Sobha Hartland, Mohammed Bin Rashid City, Dubai |        1 |         2 | 739 sqft | [Link](https://www.propertyfinder.ae/en/plp/rent/apartment-for-rent-dubai-mohammed-bin-rashid-city-sobha-hartland-one-park-avenue-13023928.html) | tel:+971565088993 |
 
 ### 💡 **Why the Data Isn't Treated**
 

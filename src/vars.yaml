@@ -1,0 +1,17 @@
+# Vars
+URL: "https://www.propertyfinder.ae/en/rent/properties-for-rent.html"
+
+section_class: "styles-module_content__bNujg property-card-module_property-card__content__Xe2hH"
+article: "property-card"
+details_class: "styles-module_content__title__eOEkd"
+price_class: "styles-module_content__price-area__I0781"
+id_price: "property-card-price"
+location_class: "styles-module_content__location__bNgNM"
+id_bedrooms_class: "property-card-spec-bedroom"
+id_bathroom_class: "property-card-spec-bathroom"
+id_area_class: "property-card-spec-area"
+button_div: "styles-module_tag-container__2M-Lo"
+link_id: "property-card-link"
+call_id: "property-card-contact-action-CALL"
+
+data_dir: 'data'

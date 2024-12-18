@@ -13,5 +13,6 @@ id_area_class: "property-card-spec-area"
 button_div: "styles-module_tag-container__2M-Lo"
 link_id: "property-card-link"
 call_id: "property-card-contact-action-CALL"
+id_time: "styles-module_footer__publish-info__UVabq"
 
 data_dir: 'data'

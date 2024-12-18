@@ -20,6 +20,7 @@ class Variables:
     button_div: str
     link_id: str
     call_id: str
+    id_time: str
 
 class Config:
     """Basic Config class"""
@@ -46,7 +47,8 @@ class Config:
             id_area_class = data.get('id_area_class'),
             button_div = data.get('button_div'),
             link_id= data.get('link_id'),
-            call_id = data.get('call_id')
+            call_id = data.get('call_id'),
+            id_time= data.get('id_time')
         )
         self.user_agents = [
             'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',

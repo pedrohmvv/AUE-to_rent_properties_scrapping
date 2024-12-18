@@ -78,7 +78,7 @@ class Scrapper:
         try:
             session = article.find('section', {"class": self.config.vars.section_class})
             return {
-                "Details": [self.extract_text(session.find('h2', {'class': self.config.vars.details_class}))],
+                "Resume": [self.extract_text(session.find('h2', {'class': self.config.vars.details_class}))],
                 "Price": [self.extract_text(session.find('p', {'data-testid': self.config.vars.id_price}))],
                 "Location": [self.extract_text(session.find('p', {'class': self.config.vars.location_class}))],
                 "Bedrooms": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_bedrooms_class}))],
@@ -106,7 +106,7 @@ class Scrapper:
         
         # Dictionary to store extracted data
         data = {
-            "Details": [],
+            "Resume": [],
             "Price": [],
             "Location": [],
             "Bedrooms": [],

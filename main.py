@@ -8,7 +8,7 @@ from src.config import Config
 config = Config()
 
 # Scrapper
-from src.scrapper import Scrapper
+from modules.scrapper import Scrapper
 scrapper = Scrapper(
     url = config.vars.URL,
     agent = choice(config.user_agents),

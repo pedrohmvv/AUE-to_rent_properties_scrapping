@@ -84,7 +84,7 @@ class Scrapper:
                 "Bedrooms": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_bedrooms_class}))],
                 "Bathrooms": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_bathroom_class}))],
                 "Area": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_area_class}))],
-                "Listing Time": [self.extract_text(session.find('p', {'data-testid': self.config.vars.id_time}))],
+                "Listing Time": [article.find('p', {'class': self.config.vars.id_time}).text],
                 "Link": [article.find('a', {'data-testid': 'property-card-link'})['href']],
                 "Contact": [article.find('a', {'data-testid': self.config.vars.call_id})['href']],
             }

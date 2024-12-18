@@ -27,7 +27,6 @@ class Config:
 
     def __init__(self):
         """Initialize instance"""
-        self.project_dir = dirname(abspath(__file__))
         data = {}
         with open(
             join(dirname(abspath(__file__)), 'vars.yaml'), encoding = 'utf-8'

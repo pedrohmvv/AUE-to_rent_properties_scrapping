@@ -32,6 +32,7 @@ class Config:
             join(dirname(abspath(__file__)), 'vars.yaml'), encoding = 'utf-8'
         ) as file:
             data = load(file, Loader=SafeLoader)
+        self.project_dir = dirname(dirname(abspath(__file__)))
         self.vars = Variables(
             URL = data.get('URL'),
             data_dir= data.get('data_dir'),
@@ -54,3 +55,5 @@ class Config:
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36',
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
         ]
+
+config = Config()

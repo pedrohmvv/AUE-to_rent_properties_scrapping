@@ -63,7 +63,7 @@ class Scrapper:
                 return element[-1].get_text(strip=True)
             return element.get_text(strip=True)
         except (AttributeError, IndexError, TypeError) as e:
-            logger.error(f"Error extracting text: {e}")
+            logger.warning(f"No more data to extract: {e}")
             return default
         
     def parse_article(self, article: BeautifulSoup) -> dict:
@@ -76,14 +76,14 @@ class Scrapper:
             dict: Extracted data from the article
         """
         try:
-            session = article.find('section', {"class": self.config.vars.section_class})
+            section = article.find('section', {"class": self.config.vars.section_class})
             return {
-                "Resume": [self.extract_text(session.find('h2', {'class': self.config.vars.details_class}))],
-                "Price": [self.extract_text(session.find('p', {'data-testid': self.config.vars.id_price}))],
-                "Location": [self.extract_text(session.find('p', {'class': self.config.vars.location_class}))],
-                "Bedrooms": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_bedrooms_class}))],
-                "Bathrooms": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_bathroom_class}))],
-                "Area": [self.extract_text(session.find_all('p', {'data-testid': self.config.vars.id_area_class}))],
+                "Resume": [self.extract_text(section.find('h2', {'class': self.config.vars.details_class}))],
+                "Price": [self.extract_text(section.find('p', {'data-testid': self.config.vars.id_price}))],
+                "Location": [self.extract_text(section.find('p', {'class': self.config.vars.location_class}))],
+                "Bedrooms": [self.extract_text(section.find_all('p', {'data-testid': self.config.vars.id_bedrooms_class}))],
+                "Bathrooms": [self.extract_text(section.find_all('p', {'data-testid': self.config.vars.id_bathroom_class}))],
+                "Area": [self.extract_text(section.find_all('p', {'data-testid': self.config.vars.id_area_class}))],
                 "Listing Time": [article.find('p', {'class': self.config.vars.id_time}).text],
                 "Link": [article.find('a', {'data-testid': 'property-card-link'})['href']],
                 "Contact": [article.find('a', {'data-testid': self.config.vars.call_id})['href']],
@@ -103,8 +103,8 @@ class Scrapper:
         """
         if soup is None:
             return {}
-        
-        # Dictionary to store extracted data
+
+        # Inicializando um dicionário para armazenar listas de imóveis
         data = {
             "Resume": [],
             "Price": [],
@@ -117,11 +117,19 @@ class Scrapper:
             "Listing Time": []
         }
 
-        # Get properties cards
-        articles = soup.find_all('article', {"data-testid": self.config.vars.article})
-        for article in articles:
-            article_data = self.parse_article(article)
-            if article_data:
-                data.update(article_data)
+        try:
+            # Encontrar todos os artigos de imóveis
+            articles = soup.find_all('article', {"data-testid": self.config.vars.article})
+            for article in articles:
+                article_data = self.parse_article(article)
+                
+                if article_data:
+                    # Adicionar cada imóvel às listas correspondentes
+                    for key in data.keys():
+                        data[key].extend(article_data[key])
 
-        return data
+            return data
+
+        except IndexError as e:
+            logger.error(f"No more data to extract: {e}")
+            return data
